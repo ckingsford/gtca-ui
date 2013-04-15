@@ -2,6 +2,11 @@ GTCA = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
 
+GTCA.Store = DS.Store.extend({
+  revision: 12,
+  adapter: 'DS.FixtureAdapter'
+});
+
 GTCA.Router.map(function() {
   this.resource('patient', { path: '/patient/:patient_id' }, function() {
     this.resource('dosing', function() {
@@ -20,9 +25,6 @@ GTCA.IndexRoute = Ember.Route.extend({
     this.transitionTo('patient', { id: 'huAC827A' });
   }
 });
-
-GTCA.DrugRoute = Ember.Route.extend({
-})
 
 GTCA.FactorRoute = Ember.Route.extend({
 });
@@ -54,11 +56,31 @@ GTCA.SessionRoute = Ember.Route.extend({
   }
 });
 
-GTCA.Patient = Ember.Object.extend({
+GTCA.DrugRoute = Ember.Route.extend({
+});
+
+GTCA.Patient = DS.Model.extend({
+  first_name: DS.attr('string'),
+  last_name: DS.attr('string'),
+  birth_date: DS.attr('date'),
+  gender: DS.attr('string'),
+  mr_id: DS.attr('number'),
+  acct_id: DS.attr('number'),
+
   name: function() {
     return this.get('first_name') + " " + this.get("last_name");
   }.property('first_name', 'last_name')
 });
+
+GTCA.Patient.FIXTURES = [{
+  id: 'huAC827A',
+  first_name: 'John',
+  last_name: 'Dou',
+  birth_date: '3/10/1960',
+  gender: 'Male',
+  mr_id: 123213,
+  acct_id: 13123
+}];
 
 GTCA.PatientRoute = Ember.Route.extend({
   renderTemplate: function() {
@@ -68,21 +90,23 @@ GTCA.PatientRoute = Ember.Route.extend({
                   outlet: 'patient_view'
                 });
   },
-  model: function(params) {
-    return GTCA.Patient.create({
-      id: 'huAC827A',
-      first_name: 'John',
-      last_name: 'Dou',
-      birth_date: '3/10/1960',
-      gender: 'Male',
-      mr_id: 123213,
-      acct_id: 13123
-    });
+});
+
+GTCA.FactorRoute = Ember.Route.extend({
+  events: {
+    factor_closed: function() {
+      this.transitionTo('drug');
+    } 
   }
 });
 
 GTCA.FactorView = Ember.View.extend({
-  
+  didInsertElement: function() {
+    this.$('.modal').modal();
+  },
+  willDestroyElement: function() {
+    this.send('factor_closed');
+  }
 });
 
 GTCA.DrugTextField = Ember.TextField.extend({
