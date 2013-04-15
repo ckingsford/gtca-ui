@@ -1,9 +1,16 @@
-GTCA = Ember.Application.create();
+GTCA = Ember.Application.create({
+  LOG_TRANSITIONS: true
+});
 
 GTCA.Router.map(function() {
   this.resource('patient', { path: '/patient/:patient_id' }, function() {
     this.resource('dosing', function() {
-      this.route('learn_more');
+      this.route('new_session');
+      this.resource('session', { path: '/session/:session_id'}, function() {
+        this.resource('drug', { path: '/drug/:drug_id' }, function() {
+          this.resource('factor', { path: '/factor/:factor_id'});
+        });
+      });
     });
   });
 });
@@ -14,10 +21,43 @@ GTCA.IndexRoute = Ember.Route.extend({
   }
 });
 
-GTCA.DosingIndexRoute = Ember.Route.extend({
-  model: function() {
-    return [];
+GTCA.DrugRoute = Ember.Route.extend({
+})
+
+GTCA.FactorRoute = Ember.Route.extend({
+});
+
+GTCA.DosingNewSessionRoute = Ember.Route.extend({
+  // TODO: actually create a new session object
+  redirect: function() {
+    this.transitionTo('session', Ember.Object.create({
+      id: 0,
+      drugs: Em.A([])
+    }));
   }
+});
+
+GTCA.SessionRoute = Ember.Route.extend({
+  model: function(params) {
+    return Ember.Object.create({
+      id: 0,
+      drugs: Em.A([])
+    });
+  },
+  setupController: function(controller, session) {
+    controller.set('content', session);
+  },
+  events: {
+    drug_selected: function(drug) {
+      this.transitionTo('drug', drug);
+    }
+  }
+});
+
+GTCA.Patient = Ember.Object.extend({
+  name: function() {
+    return this.get('first_name') + " " + this.get("last_name");
+  }.property('first_name', 'last_name')
 });
 
 GTCA.PatientRoute = Ember.Route.extend({
@@ -29,7 +69,7 @@ GTCA.PatientRoute = Ember.Route.extend({
                 });
   },
   model: function(params) {
-    return {
+    return GTCA.Patient.create({
       id: 'huAC827A',
       first_name: 'John',
       last_name: 'Dou',
@@ -37,8 +77,12 @@ GTCA.PatientRoute = Ember.Route.extend({
       gender: 'Male',
       mr_id: 123213,
       acct_id: 13123
-    }
+    });
   }
+});
+
+GTCA.FactorView = Ember.View.extend({
+  
 });
 
 GTCA.DrugTextField = Ember.TextField.extend({
@@ -47,37 +91,51 @@ GTCA.DrugTextField = Ember.TextField.extend({
   }
 });
 
-GTCA.DosingIndexController = Ember.ArrayController.extend({
+GTCA.DrugController = Ember.ObjectController.extend({
+  needs: "patient"
+});
+
+GTCA.SessionController = Ember.ObjectController.extend({
   condition: "",
 
   condition_specified: function() {
     return this.get('condition') != "";
   }.property('condition'),
 
+  selectionChanged: function() {
+    selection = this.get('selection');
+    if (selection) {
+      this.send('drug_selected', this.get('selection'));
+    }
+  }.observes('selection'),
+
   add_drug: function() { 
+    drugs = this.get('drugs');
     switch(this.get('drug').toLowerCase()) {
       case 'warfarin':
-        this.addObject({ 
+        drugs.addObject({ 
+          id: 1,
           title: 'Warfarin',
           dosage: '2mg',
           typical_dosage: '1mg',
           factors: [
-            { name: 'CYP2C9*2', type: 'Variant', effect: 0.5 },
-            { name: 'CYP2C9*3', type: 'Variant', effect: 0.5 },
-            { name: 'Asian', type: 'Ethnicity', effect: -0.2 },
-            { name: 'Heart Surgery', type: 'Condition', effect: 0.3 },
+            { id: 1, name: 'CYP2C9*2', type: 'Variant', effect: 0.5 },
+            { id: 2, name: 'CYP2C9*3', type: 'Variant', effect: 0.5 },
+            { id: 3, name: 'Asian', type: 'Ethnicity', effect: -0.2 },
+            { id: 4, name: 'Heart Surgery', type: 'Condition', effect: 0.3 },
           ]
         });
         break;
       case 'heparin':
-        this.addObject({
+        drugs.addObject({
+          id: 2,
           title: 'Heparin',
           dosage: '3mg',
           typical_dosage: '4mg',
           factors: [
-            { name: 'Asian', type: 'Ethnicity', effect: -0.2 },
-            { name: 'Heart Surgery', type: 'Condition', effect: 0.3 },
-            { name: 'CYP2C9*2', type: 'Variant', effect: 0.5 },
+            { id: 1, name: 'Asian', type: 'Ethnicity', effect: -0.2 },
+            { id: 2, name: 'Heart Surgery', type: 'Condition', effect: 0.3 },
+            { id: 3, name: 'CYP2C9*2', type: 'Variant', effect: 0.5 },
           ]
         });
         break;
@@ -87,6 +145,6 @@ GTCA.DosingIndexController = Ember.ArrayController.extend({
         alert('Bad drug: only Warfarin and Heparin currently supported'); 
     }
     this.set('drug', "");
-    this.set('selection', this.get('lastObject'));
+    this.set('selection', drugs.get('lastObject'));
   }
 });

@@ -1,0 +1,352 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"asse",
+				"assessment_id"
+			],
+			[
+				"cached_assessmen",
+				"cached_assessment_before"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"selected_items":
+		[
+			[
+				":uplod",
+				"SFTP: Upload File"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":upload",
+				"SFTP: Upload File"
+			],
+			[
+				":uplo",
+				"SFTP: Upload File"
+			],
+			[
+				":upll",
+				"SFTP: Upload Open Files"
+			],
+			[
+				":sync",
+				"SFTP: Sync Local -> Remote…"
+			],
+			[
+				":",
+				":w - Save"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				":bro",
+				"SFTP: Browse Server…"
+			],
+			[
+				"100",
+				"Snippet: upto(1.0/0.0) { |n| .. }"
+			],
+			[
+				":100",
+				"Snippet: upto(1.0/0.0) { |n| .. }"
+			],
+			[
+				"cl",
+				"File: Close All"
+			],
+			[
+				"late",
+				"LaTeXTools: Jump to PDF"
+			],
+			[
+				"latex",
+				"LaTeXTools: Jump to PDF"
+			],
+			[
+				"vie",
+				"LaTeXTools: View PDF"
+			],
+			[
+				"lates",
+				"LaTeXTools: View PDF"
+			],
+			[
+				"view pdf",
+				"LaTeXTools: View PDF"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"PACKAGE",
+				"Package Control: List Packages"
+			],
+			[
+				"brows",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pac",
+				"Package Control: List Packages"
+			],
+			[
+				"sftp",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"remote",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"package control: inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 209.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/tomabuct/autolab-src/app/views/gradebook/instructor2.html.erb",
+		"/Users/tomabuct/autolab-src/lib/association_cache.rb",
+		"/Users/tomabuct/autolab-src/app/models/submission.rb",
+		"/Users/tomabuct/autolab-src/sftp-config.json",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1365299205/autolab/usr/share/tabrahamAutolab/autolab2/app/controllers/announcement_controller.rb",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1365298291/autolab/usr/share/tabrahamAutolab/autolab2/app/controllers/gradebook_controller.rb",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1365299205/autolab/sftp-config.json",
+		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1365297812/autolab/usr/share/tabrahamAutolab/autolab2/app/controllers/gradebook_controller.rb",
+		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/tomabuct/Dropbox/Coursework/PL 312/hw4/assn4.tex",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/patient_dosing_template.ejs",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/public/stylesheets/dosing.less",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/templates.ejs",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/index.ejs",
+		"/Users/tomabuct/Desktop/roster.txt",
+		"/Users/tomabuct/assn3/assn3.tex",
+		"/Users/tomabuct/Dropbox/Coursework/PHYLAB 104/formal_report.tex",
+		"/Users/tomabuct/Dropbox/Coursework/PHYLAB 104/formal_report",
+		"/Users/tomabuct/Dropbox/Coursework/FLAC 453/hw3/hw3.tex",
+		"/Users/tomabuct/Library/Caches/Cleanup At Startup/Transmit/0943ED19-9B76-4177-B2DA-7C76459B9DBE/login.php",
+		"/Users/tomabuct/Dropbox/Coursework/PL 312/hw1/hw01-template.tex",
+		"/Users/tomabuct/Dropbox/Coursework/FLAC 453/hw2/hw2.tex",
+		"/Users/tomabuct/Dropbox/Coursework/PL 312/hw00-template.tex",
+		"/Users/tomabuct/Dropbox/Coursework/FLAC 453/hw1/hw1.tex",
+		"/Users/tomabuct/Dropbox/pennapps_s13/server.rb",
+		"/Users/tomabuct/Documents/ashley",
+		"/Users/tomabuct/Downloads/Python-2.7.3/Lib/subprocess.py",
+		"/Users/tomabuct/Downloads/afs_cs.cmu.edu_academic_autolab_autolab2_courses_15411-f12_lab4_handin_ghotz_svn_checkout_compiler_Makefile",
+		"/Users/tomabuct/Dropbox/Coursework/51229 DPI/3. Portrait/Guy",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1350966904/autolab/usr/share/tabrahamAutolab/autolab2/public/javascripts/annotation/lib/annotation.js",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1350974522/autolab/usr/share/tabrahamAutolab/autolab2/app/views/assessment/_gradesheet.html.erb",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1350974586/autolab/usr/share/tabrahamAutolab/autolab2/app/helpers/application_helper.rb",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1350967900/autolab/usr/share/tabrahamAutolab/autolab2/public/stylesheets/viewSubmission.css",
+		"/private/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1350942403/autolab/usr/share/tabrahamAutolab/autolab2/app/views/submission/view2.html.erb",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1350967409/autolab/usr/share/tabrahamAutolab/autolab2/app/views/submission/view.html.erb",
+		"/Users/tomabuct/Dropbox/Coursework/15451 Algo/algoGroupHws/Homework4.tex",
+		"/Users/tomabuct/Desktop/Mini #2",
+		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1347158559/autolab/usr/share/tabrahamAutolab/autolab2/app/views/assessment/_gradesheet.html.erb",
+		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/User/sftp_servers/autolab"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"course",
+			"assessment",
+			"aud",
+			"cached",
+			"aud",
+			"move",
+			"move)",
+			"move",
+			"normalize_param",
+			"pack",
+			"cmp",
+			"case",
+			"rec",
+			"ifabs",
+			"membr",
+			"if",
+			"nat",
+			"lamabs",
+			"dyn",
+			"lam",
+			"fix",
+			"ifz",
+			"title",
+			"graphics",
+			"}\n",
+			"_eintr_retry_call",
+			"wait",
+			"user",
+			"var",
+			"sSearch",
+			"it"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 134.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"submis",
+				"app/models/submission.rb"
+			],
+			[
+				"assocation",
+				"lib/association_cache.rb"
+			],
+			[
+				"instructor2",
+				"app/views/gradebook/instructor2.html.erb"
+			],
+			[
+				"sftp",
+				"sftp-config.json"
+			],
+			[
+				"gradebook_con",
+				"app/controllers/gradebook_controller.rb"
+			],
+			[
+				"",
+				"/Users/tomabuct/assn3/assn3.tex"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 206.0,
+	"status_bar_visible": true
+}

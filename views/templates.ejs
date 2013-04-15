@@ -12,18 +12,7 @@
   <%= include patient_dashboard_template %>
 </script>
 
-<script type="text/x-handlebars" data-template-name="dosing">
-  <div class="buttons">
-    <div class="save"></div>
-    <div class="print"></div>
-  </div>
-  <div class="title">Dose Adjustment</div>
-  {{ outlet }}
-</script>
-
-<script type="text/x-handlebars" data-template-name="dosing/index">
-  <%= include patient_dosing_template %>
-</script>
+<%= include patient_dosing_template %>
 
 <script type="text/x-handlebars" data-template-name="patient-sidebar">
   <%= include patient_sidebar_template %>

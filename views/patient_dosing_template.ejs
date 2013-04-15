@@ -1,63 +1,78 @@
-<div id="dosing">
-  {{view GTCA.DrugTextField placeholder="Enter condition to prescribe for..."
-                            class="condition"
-                            valueBinding="condition"}}
+<script type="text/x-handlebars" data-template-name="session">
+  <div class="buttons">
+    <div class="save"></div>
+    <div class="print"></div>
+  </div>
+  <div class="title">Dose Adjustment</div>
+  <div id="dosing">
+    {{view Ember.TextField placeholder="Enter condition to prescribe for..."
+                           class="condition"
+                           valueBinding="condition"}}
 
-  {{#if condition_specified }}
     {{view GTCA.DrugTextField placeholder="Add drug..."
                               class="drug"
                               valueBinding="drug"}}
 
     <div class="results">
       {{view Bootstrap.Tabs itemTitleKey="title"
-                            contentBinding="content"
+                            contentBinding="content.drugs"
                             selectionBinding="selection" class="tab_title"}}
+      {{ outlet }}
+    </div>
+  </div>
+</script>
 
-      {{#with selection }}
-      <div class="drug container-fluid">
-        <div class="session_title">
-          <div class="label_title">MEDICATION - CONDITION(S)</div>
-          <div class="medication_title">Warfarin - Atrial Fibrillation</div>
+<script type="text/x-handlebars" data-template-name="drug">
+  <div class="drug container-fluid">
+      <div class="session_title">
+        <div class="label_title">MEDICATION - CONDITION(S)</div>
+        <div class="medication_title">Warfarin - Atrial Fibrillation</div>
+      </div>
+      <div class="overview row-fluid">
+        <div class="span6">
+          <div class="name">
+            <div class="large">{{ controllers.patient.name }}</div>
+            <div class="small">should take</div>
+          </div>
+          <div class="value">{{ dosage }}</div>
         </div>
-        <div class="overview row-fluid">
-          <div class="span6">
-            <div class="name">
-              <div class="large">John Dou</div>
-              <div class="small">should take</div>
-            </div>
-            <div class="value">{{ dosage }}</div>
+        <div class="span6">
+          <div class="name">
+            <div class="large">Typical Dosage</div>
+            <div class="small">without genetic information</div>
           </div>
-          <div class="span6">
-            <div class="name">
-              <div class="large">Typical Dosage</div>
-              <div class="small">without genetic information</div>
-            </div>
-            <div class="value">{{ typical_dosage }}</div>
-          </div>
-        </div>
-        <div class="factors row-fluid">
-          <div class="span12">
-            <table>
-              <tr>
-                <th>Patient has the following factors</th>
-                <th>Effect on Dosage</th>
-                <th></th>
-              </tr>
-              {{#each factors}} 
-              <tr>
-                <td {{bindAttr class=":factor type"}}>
-                  <div class="name">{{ name }}</div>
-                  <div class="type">{{ type }}</div>
-                </td>
-                <td class="effect"><span class="increase">{{ effect }}</span></td>
-                <td class="learn_more"><span>Learn More</span></td>
-              </tr>
-              {{/each}}
-            </table>
-          </div>
+          <div class="value">{{ typical_dosage }}</div>
         </div>
       </div>
-      {{/with}}
+      <div class="factors row-fluid">
+        <div class="span12">
+          <table>
+            <tr>
+              <th>Patient has the following factors</th>
+              <th>Effect on Dosage</th>
+              <th></th>
+            </tr>
+            {{#each factors}} 
+            <tr>
+              <td {{bindAttr class=":factor type"}}>
+                <div class="name">{{ name }}</div>
+                <div class="type">{{ type }}</div>
+              </td>
+              <td class="effect"><span class="increase">{{ effect }}</span></td>
+              <td class="learn_more">
+                {{#linkTo factor this}}<span>Learn More</span>{{/linkTo}}
+              </td>
+            </tr>
+            {{/each}}
+          </table>
+        </div>
+        <div class="factor_container">
+          {{ outlet }}
+        </div>
+      </div>
     </div>
-  {{/if}} 
-</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="factor">
+  {{ name }}
+</script>
