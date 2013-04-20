@@ -22,7 +22,7 @@ GTCA.Router.map(function() {
 
 GTCA.IndexRoute = Ember.Route.extend({
   redirect: function() {
-    this.transitionTo('patient', { id: 'huAC827A' });
+    this.transitionTo('patient', GTCA.Patient.find('huAC827A'));
   }
 });
 
@@ -30,25 +30,14 @@ GTCA.FactorRoute = Ember.Route.extend({
 });
 
 GTCA.DosingNewSessionRoute = Ember.Route.extend({
-  // TODO: actually create a new session object
   redirect: function() {
-    this.transitionTo('session', Ember.Object.create({
-      id: 0,
-      drugs: Em.A([])
+    this.transitionTo('session', GTCA.Session.createRecord({
+      drugs: []
     }));
   }
 });
 
 GTCA.SessionRoute = Ember.Route.extend({
-  model: function(params) {
-    return Ember.Object.create({
-      id: 0,
-      drugs: Em.A([])
-    });
-  },
-  setupController: function(controller, session) {
-    controller.set('content', session);
-  },
   events: {
     drug_selected: function(drug) {
       this.transitionTo('drug', drug);
@@ -72,6 +61,24 @@ GTCA.Patient = DS.Model.extend({
   }.property('first_name', 'last_name')
 });
 
+GTCA.Session = DS.Model.extend({
+  drugs: DS.hasMany('GTCA.Drug')
+});
+
+GTCA.Drug = DS.Model.extend({
+  title: DS.attr('string'),
+  dosage: DS.attr('number'),
+  typical_dosage: DS.attr('number'),
+  factors: DS.hasMany('GTCA.Factor')
+});
+
+GTCA.Factor = DS.Model.extend({
+  name: DS.attr('string'),
+  kind: DS.attr('string'),
+  effect: DS.attr('number'),
+  drug: DS.belongsTo('GTCA.Drug')
+});
+
 GTCA.Patient.FIXTURES = [{
   id: 'huAC827A',
   first_name: 'John',
@@ -80,6 +87,29 @@ GTCA.Patient.FIXTURES = [{
   gender: 'Male',
   mr_id: 123213,
   acct_id: 13123
+}];
+
+GTCA.Session.FIXTURES = [];
+
+GTCA.Factor.FIXTURES = [
+  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, drug_id: 1 },
+  { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5, drug_id: 1 },
+  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: -0.2, drug_id: 2 },
+  { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3, drug_id: 2 }
+]
+
+GTCA.Drug.FIXTURES = [{
+  id: 1,
+  title: 'Warfarin',
+  dosage: 2,
+  typical_dosage: 1,
+  factors: [1, 2]
+}, {
+  id: 2,
+  title: 'Heparin',
+  dosage: 3,
+  typical_dosage: 4,
+  factors: [3, 4]
 }];
 
 GTCA.PatientRoute = Ember.Route.extend({
@@ -102,10 +132,16 @@ GTCA.FactorRoute = Ember.Route.extend({
 
 GTCA.FactorView = Ember.View.extend({
   didInsertElement: function() {
-    this.$('.modal').modal();
+    var view = this;
+    this.$('.modal').modal({
+      keyboard: true
+    });
+    this.$('.modal').on('hidden', function() {
+      view.get('controller').send('factor_closed');
+    });
   },
   willDestroyElement: function() {
-    this.send('factor_closed');
+    this.$('.modal').modal('hide');
   }
 });
 
@@ -135,40 +171,22 @@ GTCA.SessionController = Ember.ObjectController.extend({
 
   add_drug: function() { 
     drugs = this.get('drugs');
+    var drug = undefined;
     switch(this.get('drug').toLowerCase()) {
       case 'warfarin':
-        drugs.addObject({ 
-          id: 1,
-          title: 'Warfarin',
-          dosage: '2mg',
-          typical_dosage: '1mg',
-          factors: [
-            { id: 1, name: 'CYP2C9*2', type: 'Variant', effect: 0.5 },
-            { id: 2, name: 'CYP2C9*3', type: 'Variant', effect: 0.5 },
-            { id: 3, name: 'Asian', type: 'Ethnicity', effect: -0.2 },
-            { id: 4, name: 'Heart Surgery', type: 'Condition', effect: 0.3 },
-          ]
-        });
+        drug = GTCA.Drug.find(1);
         break;
       case 'heparin':
-        drugs.addObject({
-          id: 2,
-          title: 'Heparin',
-          dosage: '3mg',
-          typical_dosage: '4mg',
-          factors: [
-            { id: 1, name: 'Asian', type: 'Ethnicity', effect: -0.2 },
-            { id: 2, name: 'Heart Surgery', type: 'Condition', effect: 0.3 },
-            { id: 3, name: 'CYP2C9*2', type: 'Variant', effect: 0.5 },
-          ]
-        });
+        drug = GTCA.Drug.find(2);
         break;
       case '':
         break;
       default:
         alert('Bad drug: only Warfarin and Heparin currently supported'); 
     }
+
+    drugs.addObject(drug);
+    this.set('selection', drug);
     this.set('drug', "");
-    this.set('selection', drugs.get('lastObject'));
   }
 });

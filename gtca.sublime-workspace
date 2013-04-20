@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"drugS",
+				"drug_selected"
+			],
+			[
+				"re",
+				"redirect"
+			],
+			[
 				"asse",
 				"assessment_id"
 			],
@@ -19,16 +27,60 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 127.0,
+		"height": 267.0,
 		"selected_items":
 		[
 			[
-				":uplod",
-				"SFTP: Upload File"
-			],
-			[
 				":w",
 				":w - Save"
+			],
+			[
+				"w",
+				"Word Wrap: Toggle"
+			],
+			[
+				":",
+				":w - Save"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
+			[
+				":instal",
+				"Package Control: Install Package"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			],
+			[
+				":ww",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				":uplod",
+				"SFTP: Upload File"
 			],
 			[
 				":upload",
@@ -45,14 +97,6 @@
 			[
 				":sync",
 				"SFTP: Sync Local -> Remote…"
-			],
-			[
-				":",
-				":w - Save"
-			],
-			[
-				":q",
-				"Set Syntax: SQL"
 			],
 			[
 				"install",
@@ -131,7 +175,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 530.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -148,6 +192,16 @@
 	},
 	"file_history":
 	[
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/patient_dashboard_template.ejs",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/patient_dosing_template.ejs",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/templates.ejs",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/lib.ejs",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/public/javascripts/app.js",
+		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/patient_sidebar_template.ejs",
+		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/patient_",
+		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/tomabuct/autolab-src/app/views/gradebook/instructor2.html.erb",
 		"/Users/tomabuct/autolab-src/lib/association_cache.rb",
 		"/Users/tomabuct/autolab-src/app/models/submission.rb",
@@ -157,12 +211,8 @@
 		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1365299205/autolab/sftp-config.json",
 		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
 		"/var/folders/td/ygq384l95kg_mbhf11782pk40000gn/T/sublime-sftp-browse-1365297812/autolab/usr/share/tabrahamAutolab/autolab2/app/controllers/gradebook_controller.rb",
-		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/tomabuct/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/tomabuct/Dropbox/Coursework/PL 312/hw4/assn4.tex",
-		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/patient_dosing_template.ejs",
 		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/public/stylesheets/dosing.less",
-		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/templates.ejs",
 		"/Users/tomabuct/Dropbox/Coursework/HCI 571/gtca/views/index.ejs",
 		"/Users/tomabuct/Desktop/roster.txt",
 		"/Users/tomabuct/assn3/assn3.tex",
@@ -206,6 +256,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"factors",
+			"console",
+			"Ember.Array",
+			"Dosing",
+			"twitter",
 			"course",
 			"assessment",
 			"aud",
@@ -257,6 +312,11 @@
 			"sheets":
 			[
 			]
+		},
+		{
+			"sheets":
+			[
+			]
 		}
 	],
 	"incremental_find":
@@ -276,11 +336,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -308,6 +375,46 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"lib",
+				"views/lib.ejs"
+			],
+			[
+				"sidebar",
+				"views/patient_sidebar_template.ejs"
+			],
+			[
+				"app.j",
+				"public/javascripts/app.js"
+			],
+			[
+				"template",
+				"views/templates.ejs"
+			],
+			[
+				"tem",
+				"views/templates.ejs"
+			],
+			[
+				"public/",
+				"public/javascripts/app.js"
+			],
+			[
+				"views/p",
+				"views/templates.ejs"
+			],
+			[
+				"patient",
+				"views/patient_dashboard_template.ejs"
+			],
+			[
+				"patietn",
+				"views/patient_dosing_template.ejs"
+			],
+			[
+				"publi",
+				"public/javascripts/app.js"
+			],
 			[
 				"submis",
 				"app/models/submission.rb"
