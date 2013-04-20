@@ -190,3 +190,9 @@ GTCA.SessionController = Ember.ObjectController.extend({
     this.set('drug', "");
   }
 });
+
+Ember.Handlebars.registerBoundHelper('renderEffect', function(value, opts) {
+  // TODO: currently checking for undefined value
+  // probably due to promise instead of loaded model?
+  return value ? (value * 100).toString() + "%" : value;
+});
