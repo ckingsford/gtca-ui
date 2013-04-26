@@ -1,8 +1,9 @@
+/*
 GTCA = Ember.Application.create({
-  LOG_TRANSITIONS: true
+	LOG_TRANSITIONS: true
 });
 
-/*
+
 GTCA.Store = DS.Store.extend({
   revision: 12,
   adapter: 'DS.RESTAdapter'

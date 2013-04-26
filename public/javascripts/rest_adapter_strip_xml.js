@@ -18,6 +18,6 @@ GTCA.RESTAdapterStripXML = DS.RESTAdapter.extend({
         return json;
     };
     //var url_ = url_capitalize_resource(url);
-    return this._super(url_, type, hash);
+    return this._super(url, type, hash);
   }
 });
