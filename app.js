@@ -3,9 +3,25 @@
  * Module dependencies.
  */
 
+add_ids = function(h) {
+  for (var id in h) {
+    h[id]['id'] = id
+  }
+  return h;
+}
+
+to_a = function(h) {
+  var l = []
+  for (var id in h) {
+    l.push(h[id]);
+  }
+  return l;
+}
+
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , patient = require('./routes/patient')
+  , disease_prediction = require('./routes/disease_prediction')
   , http = require('http')
   , path = require('path');
 
@@ -31,8 +47,12 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/patients', patient.list);
+app.get('/patient/:id', patient.get);
+app.get('/disease_predictions', disease_prediction.list);
+app.get('/disease_prediction/:id', disease_prediction.get);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
