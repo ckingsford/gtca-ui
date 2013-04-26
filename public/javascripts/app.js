@@ -94,7 +94,7 @@ GTCA.Session.FIXTURES = [];
 GTCA.Factor.FIXTURES = [
   { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, drug_id: 1 },
   { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5, drug_id: 1 },
-  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: -0.2, drug_id: 2 },
+  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2, drug_id: 2 },
   { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3, drug_id: 2 }
 ]
 

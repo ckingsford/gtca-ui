@@ -25,10 +25,13 @@
   
   .nav-tabs > li > a {
 	  border: none;
+	  transition: background-color .25s ease-in-out;
+      -moz-transition: background-color .25s ease-in-out;
+      -webkit-transition: background-color .25s ease-in-out;
   }
   
   .nav-tabs > li > a:hover {
-	  background-color: #CCC;
+	  background-color: #b1b1b1;
   }
   
   .tab_title {
@@ -239,7 +242,15 @@
               .rounded(3px);
               border-top: 1px solid fade(white, 35%);
               .box-shadow(0 -1px 1px #676767);
+              transition: background-color .25s ease-in-out;
+              -moz-transition: background-color .25s ease-in-out;
+              -webkit-transition: background-color .25s ease-in-out;
             }
+            
+            span:hover {
+	           background-color: #4b4b4b;
+            }
+            
           }
         }
       }
