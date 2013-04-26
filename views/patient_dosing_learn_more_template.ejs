@@ -3,23 +3,32 @@
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h3>{{ name }}</h3>
+      <div id="snp-label">SNP</p>
     </div>
     <div class="modal-body factor-detail">
-      <table>
-        <tr><th>Mutation</th><td>Missense, <span class="change">C</span>GT > <span>T</span>GT (Val > Met)</td></tr>
-        <tr><th>Level of Evidence</th><td>1A</td></tr>
-        <tr><th>Race</th><td>White</td></tr>
-        <tr><th>dbSNP</th><td>http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=2108622</td></tr>
-        <tr><th>OMIM</th><td>http://omim.org/entry/601130</td></tr>
-      </table>
+      <div class="section">
+        <h4>Effect of Factor on Dose</h4>
+        <div class="main-info">C in patient's genotype CC increases risk of adverse effects</div>
+      </div>
+      <div class="section">
+        <h4>Overview of CY2C9*2</h4>
+        <div class="main-info"><a href="http://www.ncbi.nlm.nih.gov/snp/?term=rs1234" target="_blank">CYP2C9*2 (rsID:rs1799853)</a> is a variant of the gene <a href="http://omim.org/entry/601130" target="_blank">CYP2C9</a></div>
+        <table>
+          <tr><th>Mutation</th><td>C<span class="mutation">C</span> -> C<span class="mutation">T</span> Missense (Val -> Met)</tr>
+          <tr><th>PharmGKB Level of Evidence</th><td><a href="http://www.pharmgkb.org/page/clinAnnLevels" target="_blank">1A</a></td></tr>
+        </table>
+      </div>
+      <div class="section">
+        <h4>Publications related to CYP2C9*2</h4>
+        <div class="publication"><a href="http://www.ncbi.nlm.nih.gov/pubmed/23563037" target="_blank">Nahar R, Deb R, Saxena R, Puri RD, Verma IC. Variability in CYP2C9 allele frequency: A pilot study of its predicted impact on warfarin response among healthy South and North Indians. Pharmacol Rep. 2013;65(1):187-94.</a>
+          <p class="info">Sample size = 209.82</br>
+            Sample type = North Indian, South Indian</br>
+            Frequencey of allele in population = 0.006, 0.05</br>
+            p < 0.001</br>
+          </p>
+      </div>
 
-      <table>
-        <tr><th>Frequency</th><td>0.4</td></tr>
-        <tr><th>P-value</th><td>0.05</td></tr>
-        <tr><th>Dose</th><td>Lower Dosage</td></tr>
-        <tr><th>Population Size</th><td>1000 participants</td></tr>
-        <tr><th>Population</th><td>White/Caucasian</td></tr>
-      </table>
+      </div>
     </div>
   </div>
 </script>
