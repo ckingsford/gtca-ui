@@ -4,11 +4,13 @@ GTCA = Ember.Application.create({
 
 GTCA.Store = DS.Store.extend({
   revision: 12,
-  adapter: 'DS.FixtureAdapter'
+  adapter: 'DS.RESTAdapter'
 });
 
 GTCA.Router.map(function() {
   this.resource('patient', { path: '/patient/:patient_id' }, function() {
+    // TODO: disease should be a resource once factors are added
+    this.route('disease');
     this.resource('dosing', function() {
       this.route('new_session');
       this.resource('session', { path: '/session/:session_id'}, function() {
@@ -20,9 +22,30 @@ GTCA.Router.map(function() {
   });
 });
 
+// TODO: if DiseaseRoute is converted to a resource,
+// change name to GTCA.DiseaseRoute
+GTCA.PatientDiseaseRoute = Ember.Route.extend({
+  // TODO: currently hardcoded; will need to have a linkTo helper that specifies
+  // the appropriate DiseasePrediction model object based upon chosen Disease
+  setupController: function(controller, model) {
+    // TODO: server will need to understand multiple find params
+    controller.set('content', GTCA.DiseasePrediction.find({
+      "patient_id": "CauC_deLiver_2220122",
+      // TODO: should be accessing the current patient
+      //"patient_id": controller.controllers.patient.id,
+      "model_id": "obesity_1"
+    }));
+    //console.log(Ember.inspect(controller.get('content')));
+  }
+});
+
+GTCA.PatientDiseaseController = Ember.ArrayController.extend({
+  needs: 'patient'
+});
+
 GTCA.IndexRoute = Ember.Route.extend({
   redirect: function() {
-    this.transitionTo('patient', GTCA.Patient.find('huAC827A'));
+    this.transitionTo('patient', GTCA.Patient.find('CauC_deLiver_2220122'));
   }
 });
 
@@ -46,6 +69,12 @@ GTCA.SessionRoute = Ember.Route.extend({
 });
 
 GTCA.DrugRoute = Ember.Route.extend({
+});
+
+GTCA.DiseasePrediction = DS.Model.extend({
+  risk: DS.attr('number'),
+  model_id: DS.attr('string'),
+  patient: DS.belongsTo('GTCA.Patient')
 });
 
 GTCA.Patient = DS.Model.extend({
@@ -79,7 +108,7 @@ GTCA.Factor = DS.Model.extend({
   drug: DS.belongsTo('GTCA.Drug')
 });
 
-GTCA.Patient.FIXTURES = [{
+/*GTCA.Patient.FIXTURES = [{
   id: 'huAC827A',
   first_name: 'John',
   last_name: 'Dou',
@@ -110,7 +139,7 @@ GTCA.Drug.FIXTURES = [{
   dosage: 3,
   typical_dosage: 4,
   factors: [3, 4]
-}];
+}];*/
 
 GTCA.PatientRoute = Ember.Route.extend({
   renderTemplate: function() {

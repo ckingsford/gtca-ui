@@ -4,14 +4,14 @@
  */
 
 var disease_predictions = add_ids({
-  "CauC_deliver_1110222_obesity": {
-    "patient_id": "CauC_deLiver_1110222",
-    "model_id": "obesity",
+  "CauC_deliver_2220122_obesity": {
+    "patient_id": "CauC_deLiver_2220122",
+    "model_id": "obesity_1",
     "risk": 0.5
   }, 
-  "CauC_deliver_1110107_obesity" : {
-    "model_id": "obesity",
-    "patient_id": "CauC_deLiver_1110107",
+  "CauC_deliver_2220107_obesity" : {
+    "model_id": "obesity_1",
+    "patient_id": "CauC_deLiver_2220107",
     "risk": 0.5
   }
 })

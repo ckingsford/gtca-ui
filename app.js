@@ -48,9 +48,9 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/patients', patient.list);
-app.get('/patient/:id', patient.get);
+app.get('/patients/:id', patient.get);
 app.get('/disease_predictions', disease_prediction.list);
-app.get('/disease_prediction/:id', disease_prediction.get);
+app.get('/disease_predictions/:id', disease_prediction.get);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
