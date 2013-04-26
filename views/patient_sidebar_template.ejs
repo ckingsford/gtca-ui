@@ -6,32 +6,41 @@
       <tr><td>Birthdate</td><td>{{ birth_date }}</td>
       <tr><td>Gender</td><td>{{ gender }}</td></tr>
       <tr><td>MR</td><td>{{ mr_id }}</td></tr>
-      <tr><td>Acct No.</td><td>{{ acct_id }}</td></tr>
+      <tr class="last"><td>Acct No.</td><td>{{ acct_id }}</td></tr>
     </table>
   </div>
   <div class="recent-medication">
     <h1 class="header basic">Current Medication</h2>
     <table>
-      <tr>
-        <td><div>Naproxen</div><div>03/21/2013</div></td>
+      <tr class="dateTopSpan">
+        <td><div>Naproxen</div></td>
         <td>2mg</td>
       </tr>
-      <tr>
-        <td><div>Metformin</div><div>02/01/2011</div></td>
+      <tr class="dateSpan">
+      	<td colSpan=2>03/21/2013 - 04/01/2013</td>
+      </tr>
+      <tr class="dateTopSpan">
+        <td><div>Metformin</div></td>
         <td>3mg</td>
       </tr>
-      <tr>
-        <td><div>Aspirin</div><div>12/19/2010</div></td>
+      <tr class="dateSpan">
+      	<td colSpan=2>02/01/2013 - 04/13/2013</td>
+      </tr>
+      <tr class="dateTopSpan">
+        <td><div>Aspirin</div></td>
         <td>1mg</td>
+      </tr>
+      <tr class="dateSpan last">
+      	<td colSpan=2>01/19/2013 - 04/05/2013</td>
       </tr>
     </table>
   </div>
   <div class="recent-conditions">
-    <h1 class="header basic">Current Conditions</h2>
+    <h1 class="header basic">Active Conditions</h2>
     <table>
       <tr><td><div>Atrial Fibrillation</div><div>03/21/2012</div></td></tr>
       <tr><td><div>Diabetes, Type 1</div><div>02/01/2011</div></td></tr>
-      <tr><td><div>Knee Surgery</div><div>12/19/2010</div></td></tr>
+      <tr class="last"><td><div>Knee Surgery</div><div>12/19/2010</div></td></tr>
     </table>
   </div>
   <div class="allergy-medication">

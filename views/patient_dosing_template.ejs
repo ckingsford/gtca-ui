@@ -31,24 +31,24 @@
       <div class="overview row-fluid">
         <div class="span6">
           <div class="name">
-            <div class="large">{{ controllers.patient.name }}</div>
-            <div class="small">should take</div>
+            <div class="large">Recommended Dosage</div>
+            <div class="small">based on {{ controllers.patient.name }}&#39;s genetic information</div>
           </div>
-          <div class="value">{{ dosage }}mg</div>
+          <div class="value more_padding">{{ dosage }}mg<span class="small_date">/day</span></div>
         </div>
         <div class="span6">
           <div class="name">
-            <div class="large">Typical Dosage</div>
+            <div class="large">Baseline Dosage</div>
             <div class="small">without genetic information</div>
           </div>
-          <div class="value">{{ typical_dosage }}mg</div>
+          <div class="value"><div class="typical_dose"></div></div>
         </div>
       </div>
       <div class="factors row-fluid">
         <div class="span12">
           <table>
             <tr>
-              <th>Patient has the following factors</th>
+              <th>{{ controllers.patient.name }} has the following factors</th>
               <th>Effect on Dosage</th>
               <th></th>
             </tr>

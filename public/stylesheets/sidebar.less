@@ -23,17 +23,38 @@
     background-color: #2a2a2a;
     background-repeat: no-repeat;
     background-position: 8% center;
-    border-top: #000 solid 1px;
-    border-bottom: rgba(255, 255, 255, 0.2) solid 1px;
+    border-top: rgba(255, 255, 255, 0.2) solid 1px;
+    border-bottom: #000 solid 1px;
   }
 
   table {
     color: #f6f6f6;
     text-shadow: 0 -1px 0 #000;
     width: 100%;
-    border-spacing: 15px 5px;
+  
     border-collapse: separate;
-    padding: 5px 0;
+    padding: 0px 0;
+    
+    tr td, tr th {
+    	border-top: solid thin #444;
+	    border-bottom: solid thin #2e2e2e;
+	    padding: 8px 15px 8px 15px;
+    }
+    
+    tr.last td, tr.dateTopSpan td {
+	    border-bottom: none;
+    }
+    
+    tr.dateTopSpan td {
+	    padding: 8px 15px 0px 15px;
+    }
+    
+    tr.dateSpan td {
+	    border-top: none;
+	    text-align: left !important;
+	    padding: 3px 15px 8px 15px;
+    }
+    
   }
   
   div.basic-info { 

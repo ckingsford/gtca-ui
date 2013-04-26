@@ -32,13 +32,12 @@
 
     &.condition {
       background-position: 10px 8px;
-      background-image: url(/images/condition_search.png);
+      background-image: url(/images/condition_search_1.png);
     }
 
     &.drug {
-      background-size: auto 80%;
-      background-position: 6px 4px;
-      background-image: url(/images/drug_search.png);
+      background-position: 10px 8px;
+      background-image: url(/images/drug_search_2.png);
     }
 
   }
@@ -93,10 +92,31 @@
         }
 
         .value {
-          padding: 40px 0;
+          padding: 20px 0;
           font-size: 3em;
           background: white;
+          min-height: 75px;
+          max-height: 120px;
+          
+          .typical_dose {
+	          width: 219px;
+	          height: 120px;
+	          display: block;
+	          margin: 0 auto;
+	          background-image: url(/images/typical_dose.png);
+	          background-size: 219px auto;
+          }
+          
+          .small_date {
+	          font-size: 0.4em;
+          }
+          
         }
+        
+        .more_padding {
+	        padding-top: 65px;
+        }
+        
       }
     }  
 
