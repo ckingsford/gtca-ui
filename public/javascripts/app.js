@@ -2,14 +2,31 @@ GTCA = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
 
+/*
 GTCA.Store = DS.Store.extend({
   revision: 12,
   adapter: 'DS.RESTAdapter'
+  url: 'localhost'
 });
+*/
+
+
+GTCA.Store = DS.Store.extend({
+  revision: 12,
+  adapter: 'GTCA.RESTAdapterStripXML'
+});
+
+GTCA.RESTAdapterStripXML.reopen({
+  url: 'localhost:8080',
+  namespace: 'prediction-engine-webservice/services/predictionEngine'
+});
+
+
 
 GTCA.Router.map(function() {
   this.resource('patient', { path: '/patient/:patient_id' }, function() {
     // TODO: disease should be a resource once factors are added
+
     this.route('disease');
     this.resource('dosing', function() {
       this.route('new_session');
