@@ -248,7 +248,7 @@ Bootstrap.NavList = Ember.CollectionView.extend({
   tagName: 'ul',
 
   itemViewClass: Ember.View.extend(Bootstrap.ItemSelectionSupport, {
-    template: Ember.Handlebars.compile("<a href='#'>{{view.title}}</a>")
+    template: Ember.Handlebars.compile('<a href="#">{{view.title}}</a>')
   })
 });
 
@@ -270,7 +270,7 @@ Bootstrap.BlockAlertMessage = Bootstrap.AlertMessage.extend({
 (function() {
 var Bootstrap = window.Bootstrap;
 Bootstrap.PillItem = Ember.View.extend(Bootstrap.ItemSelectionSupport, {
-  template: Ember.Handlebars.compile('<a href="#">{{view.title}}</a>')
+  template: Ember.Handlebars.compile('<a href="#">{{view.title}}<div class="close_tab">×</div></a>')
 });
 
 })();
@@ -398,6 +398,7 @@ Bootstrap.Pagination = Ember.CollectionView.extend({
   classNames: "pagination",
   itemTitleKey: "title",
   itemHrefKey: "href",
+  itemDosageKey: "dosage",
   init: function() {
     this._super();
     if (!this.get("content")) {
@@ -657,4 +658,3 @@ Bootstrap.Forms.TextField = Bootstrap.Forms.Field.extend({
 (function() {
 
 })();
-
