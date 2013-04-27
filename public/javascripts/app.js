@@ -18,14 +18,16 @@ GTCA.Store = DS.Store.extend({
 });
 
 GTCA.RESTAdapterStripXML.reopen({
-  url: 'localhost:8080',
-  namespace: 'prediction-engine-webservice/services/predictionEngine'
+  //url: 'localhost:8080',            //local
+  //namespace: 'prediction-engine-webservice/services/predictionEngine'
+  url: 'http://expression.ml.cmu.edu',       //server
+  namespace: 'proxy/lifeGuy/services/predictionEngine'
 });
 
 
 
 GTCA.Router.map(function() {
-  this.resource('patient', { path: '/patient/:patient_id' }, function() {
+  this.resource('patient', { path: '/patient/:id' }, function() {
     // TODO: disease should be a resource once factors are added
 
     this.route('disease');
