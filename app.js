@@ -21,7 +21,9 @@ to_a = function(h) {
 var express = require('express')
   , routes = require('./routes')
   , patient = require('./routes/patient')
+  , patient_mysql = require('./routes/patient_mysql.js')
   , disease_prediction = require('./routes/disease_prediction')
+  , disease_prediction_mysql = require('./routes/disease_prediction_mysql')
   , http = require('http')
   , path = require('path');
 
@@ -47,15 +49,25 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/patients', patient.list);
-app.get('/patients/:id', patient.get);
-app.get('/disease_predictions', disease_prediction.list);
-app.get('/disease_predictions/:id', disease_prediction.get);
+// app.get('/patients', patient.list);
+app.get('/patients', patient_mysql.list);
+//app.get('/patients/:id', patient.get);
+app.get('/patients/:id', patient_mysql.get);
+//app.get('/disease_predictions', disease_prediction.list);
+app.get('/disease_predictions', disease_prediction_mysql.list);
+//app.get('/disease_predictions/:id', disease_prediction.get);
+app.get('/disease_predictions/:id', disease_prediction_mysql.get);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
-//reading mysql 
-var guy = 1;
+
+//"C:\Program Files\nodejs\node.exe" app.js
+
+// see server at: http://127.0.0.1:3000/
+
+// dependencies
+//npm install express
+//npm install mysql@2.0.0-alpha7
 

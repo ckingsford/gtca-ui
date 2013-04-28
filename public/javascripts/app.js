@@ -1,17 +1,17 @@
-/*
+/* not needed - created in /views/index.ejs
 GTCA = Ember.Application.create({
 	LOG_TRANSITIONS: true
 });
-
+*/
 
 GTCA.Store = DS.Store.extend({
   revision: 12,
-  adapter: 'DS.RESTAdapter'
-  url: 'localhost'
+  adapter: 'DS.RESTAdapter',
+  url: 'localhost:3000'
 });
-*/
 
 
+/*
 GTCA.Store = DS.Store.extend({
   revision: 12,
   adapter: 'GTCA.RESTAdapterStripXML'
@@ -20,10 +20,10 @@ GTCA.Store = DS.Store.extend({
 GTCA.RESTAdapterStripXML.reopen({
   //url: 'localhost:8080',            //local
   //namespace: 'prediction-engine-webservice/services/predictionEngine'
-  url: 'http://expression.ml.cmu.edu',       //server
-  namespace: 'proxy/lifeGuy/services/predictionEngine'
+  //url: 'http://expression.ml.cmu.edu',       //server
+  //namespace: 'proxy/lifeGuy/services/predictionEngine'
 });
-
+*/
 
 
 GTCA.Router.map(function() {
@@ -100,7 +100,7 @@ GTCA.DiseasePrediction = DS.Model.extend({
 GTCA.Patient = DS.Model.extend({
   first_name: DS.attr('string'),
   last_name: DS.attr('string'),
-  birth_date: DS.attr('date'),
+  birth_date: DS.attr('string'),  //TODO: should be DS.attr('date') temporarily changed to 'string' for simplicity
   gender: DS.attr('string'),
   mr_id: DS.attr('number'),
   acct_id: DS.attr('number'),
