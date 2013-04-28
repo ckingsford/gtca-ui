@@ -65,9 +65,19 @@ http.createServer(app).listen(app.get('port'), function(){
 
 //"C:\Program Files\nodejs\node.exe" app.js
 
-// see server at: http://127.0.0.1:3000/
+// Server runs at: http://127.0.0.1:3000/#
 
-// dependencies
+// dependencies:
 //npm install express
-//npm install mysql@2.0.0-alpha7
+//npm install mysql@2.0.0-alpha7  (https://github.com/felixge/node-mysql)
+
+//for debugging purposes:
+//npm install -g node-inspector  (https://github.com/dannycoates/node-inspector)
+
+//debugging:
+//1.start application in debug mode:
+//node --debug your/node/program.js
+//2. start the node-inspector
+//node-inspector
+//3. go to http://127.0.0.1:8080/debug?port=5858
 
