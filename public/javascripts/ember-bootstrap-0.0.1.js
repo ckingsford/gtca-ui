@@ -270,7 +270,7 @@ Bootstrap.BlockAlertMessage = Bootstrap.AlertMessage.extend({
 (function() {
 var Bootstrap = window.Bootstrap;
 Bootstrap.PillItem = Ember.View.extend(Bootstrap.ItemSelectionSupport, {
-  template: Ember.Handlebars.compile('<a href="#">{{view.title}}<div class="close_tab">×</div></a>')
+  template: Ember.Handlebars.compile('<a href="#">{{view.title}}<div {{ action close_tab view.content }} class="close_tab">×</div></a>')
 });
 
 })();

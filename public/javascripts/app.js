@@ -41,6 +41,9 @@ GTCA.SessionRoute = Ember.Route.extend({
   events: {
     drug_selected: function(drug) {
       this.transitionTo('drug', drug);
+    },
+    no_more_drugs: function() {
+      this.transitionTo('session');
     }
   }
 });
@@ -165,7 +168,7 @@ GTCA.SessionController = Ember.ObjectController.extend({
   selectionChanged: function() {
     selection = this.get('selection');
     if (selection) {
-      this.send('drug_selected', this.get('selection'));
+      this.send('drug_selected', selection);
     }
   }.observes('selection'),
 
@@ -188,6 +191,19 @@ GTCA.SessionController = Ember.ObjectController.extend({
     drugs.addObject(drug);
     this.set('selection', drug);
     this.set('drug', "");
+  },
+
+  close_tab: function(drug) {
+    drugs = this.get('drugs');
+    drugs.removeObject(drug);
+
+    if (drugs.get('length') == 0) {
+      this.send('no_more_drugs');
+      this.set('selection', null);
+    } else if (this.get('selection') == drug) {
+      go_to = Math.max(0, drugs.indexOf(drug) - 1);
+      this.set('selection', drugs.objectAt(go_to));
+    }
   }
 });
 
