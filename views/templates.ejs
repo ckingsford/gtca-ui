@@ -18,10 +18,4 @@
   <%= include patient_sidebar_template %>
 </script>
 
-<!-- because this is a route, we have the patient/disease -->
-<!-- http://emberjs.com/guides/routing/defining-your-routes/ -->
-<script type="text/x-handlebars" data-template-name="patient/disease">
-  {{#each controller}}
-    {{ risk }}
-  {{/each}}
-</script>
+<%= include patient_disease_prediction_template %>
