@@ -84,8 +84,8 @@ GTCA.Factor = DS.Model.extend({
 
 GTCA.Patient.FIXTURES = [{
   id: 'huAC827A',
-  first_name: 'John',
-  last_name: 'Dou',
+  first_name: 'Nikhil',
+  last_name: 'Venkatesan',
   birth_date: '3/10/1960',
   gender: 'Male',
   mr_id: 123213,
@@ -185,7 +185,7 @@ GTCA.SessionController = Ember.ObjectController.extend({
       case '':
         break;
       default:
-        alert('Bad drug: only Warfarin and Heparin currently supported'); 
+        alert('Only Warfarin and Heparin are currently supported. We apologize for the inconvenience.'); 
     }
 
     drugs.addObject(drug);
