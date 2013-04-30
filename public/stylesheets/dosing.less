@@ -1,5 +1,4 @@
 @import "factor_learn_more.less";
-@import "save.less";
 
 #dosing {
   margin: 10px;
@@ -73,6 +72,7 @@
 
   .tab_title {
     text-transform: uppercase;
+    font-weight: 600;
   }
 
   input {
@@ -83,7 +83,7 @@
     border-radius: 0px;
     border: none;
     color: #747474;
-    font-family: 'Signika';
+    font-family: 'Source Sans Pro';
     font-weight: 400;
     font-size: 1.1em;
     margin-bottom: 10px;
@@ -264,6 +264,11 @@
 
           &.learn_more { 
             text-align: right;
+            
+            a {
+	            text-decoration: none;
+            }
+            
             span {
               white-space: nowrap;
               cursor: pointer;

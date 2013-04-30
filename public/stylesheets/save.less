@@ -1,14 +1,10 @@
-.modal {
+#save-modal {
 	
 	background-color: #f0f0f0;
+	color: #5A5A5A;
 	
 	.modal-header {
 		border-bottom: none;
-		background-image: url(/images/snp.png);
-		background-size: auto 37px;
-		background-position: 8px 16px;
-		background-repeat: no-repeat;
-		padding-left: 45px;
 	}
 	
 	.factor-detail.modal-body {
@@ -27,58 +23,109 @@
 				margin-top: 0;
 				margin-bottom: 0;
 			}
-	
-			.main-info {
-				padding: 15px;
-				text-align: center;
-				background-color: #FFF;
-			}
-	
-			span.mutation {
-				color: red;
-			}
-	
+			
 			table {
-				tbody {
-					tr {
-					
-					border-bottom: none !important;
-					border-top: solid thin #e6e6e6;
-					
-						th {
-							background-color: #FFF !important;
-							font-size: 1em;
-						}
-					}
+				
+				td {
+					border-top: #ddd solid thin;
 				}
-			}
-	
-			div.publication {
-				padding: 15px;
+				
+				background: #FFF;
+				width: 100%;
+				
+				.left {				
+					width: 50px;					
+				}
+				
+				.checkbox {
+					-webkit-appearance: none;
+				    background-color: #fafafa;
+				    border: 1px solid #cacece;
+				    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+				    padding: 9px;
+				    margin-left: 15px;
+				    border-radius: 3px;
+				    display: inline-block;
+				    position: relative;
+				}
+					
+				.checkbox:active, .regular-checkbox:checked:active {
+					    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+				}
+					 
+				.checkbox:checked {
+					    background-color: #e9ecee;
+					    border: 1px solid #adb8c0;
+					    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+					    color: #99a1a7;
+				}
+					
+				.checkbox:checked:after {
+					    content: '\2713';
+					    font-size: 14px;
+					    position: absolute;
+					    top: 0px;
+					    left: 3px;
+					    color: #99a1a7;
+				}
+
+				
+				.main-info {
+				padding: 15px 35px;
+				text-align: left;
 				background-color: #FFF;
-	
-				table.info {
-					
-					margin-top: 5px;
-					
-					tr {
-					border-top: none;
-					font-size: 0.8em;
-					
-						td {
-							padding: 0px !important;
-						}
-					
+				background-image: url(/images/med.png);
+				background-repeat: no-repeat;
+				background-position: 10px 27px;
+				
+					.drug-name {
+						font-weight: 600;
 					}
 					
+					.condition-name {
+						font-size: 0.9em;
+					}
+				
 				}
+				
+				
+				
 			}
-		
+					
 		&.last {
 			margin-bottom: 15px;
 		}
 		
 		}
+		
+		.buttons {
+			
+			float: right;
+			margin-bottom: 15px;
+			
+			.learn_more { 
+	              white-space: nowrap;
+	              cursor: pointer;
+	              font-weight: 400;
+	              font-family: "Source Sans Pro";
+	              text-transform: uppercase;
+	              font-size: 0.9em; 
+	              background: #676767;
+	              border: none;
+	              padding: 4px 20px 3px 20px;
+	              color: white;
+	              .rounded(3px);
+	              border-top: 1px solid fade(white, 35%);
+	              .box-shadow(0 -1px 1px #676767);
+	              transition: background-color .25s ease-in-out;
+	              -moz-transition: background-color .25s ease-in-out;
+	              -webkit-transition: background-color .25s ease-in-out;
+	            }
+	
+	        .learn_more:hover {
+	              background-color: #4b4b4b;
+	            }
+	     }
 		
 	}
 
