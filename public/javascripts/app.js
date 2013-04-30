@@ -204,6 +204,21 @@ GTCA.SessionController = Ember.ObjectController.extend({
       go_to = Math.max(0, drugs.indexOf(drug) - 1);
       this.set('selection', drugs.objectAt(go_to));
     }
+  },
+
+  open_session_picker: function() {
+    new GTCA.SessionPickerView().append();
+  }
+});
+
+GTCA.SessionPickerView = Ember.View.extend({
+  templateName: "session-picker",
+  didInsertElement: function() {
+    var view = this;
+    this.$('.modal').modal();
+    this.$('.modal').on('hidden', function() {
+      view.destroy();
+    });
   }
 });
 
