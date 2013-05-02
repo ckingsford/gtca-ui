@@ -117,8 +117,8 @@ GTCA.Prediction.FIXTURES = [{
 
 GTCA.Patient.FIXTURES = [{
   id: 'huAC827A',
-  first_name: 'John',
-  last_name: 'Dou',
+  first_name: 'Nikhil',
+  last_name: 'Venkatesan',
   birth_date: '3/10/1960',
   gender: 'Male',
   mr_id: 123213,
@@ -260,6 +260,21 @@ GTCA.SessionController = Ember.ObjectController.extend({
         session.get('predictions').addObjects(l);
         session.set('selection', l.get('lastObject'));
       });
+    });
+  },
+
+  open_session_picker: function() {
+    new GTCA.SessionPickerView().append();
+  }
+});
+
+GTCA.SessionPickerView = Ember.View.extend({
+  templateName: "session-picker",
+  didInsertElement: function() {
+    var view = this;
+    this.$('.modal').modal();
+    this.$('.modal').on('hidden', function() {
+      view.destroy();
     });
   }
 });

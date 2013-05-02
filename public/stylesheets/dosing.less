@@ -4,7 +4,7 @@
   margin: 10px;
 
   // reset bootstrap tab formatting
-  .nav-tabs { margin-bottom: 0; }
+  .nav-tabs { margin-bottom: 0; border-bottom: none;}
   .nav-tabs > :not(.active) > a {
     background: #999;
     color: #666;
@@ -72,6 +72,7 @@
 
   .tab_title {
     text-transform: uppercase;
+    font-weight: 600;
   }
 
   @search-border-radius: 3px;
@@ -83,7 +84,7 @@
     border-radius: 0px;
     border: none;
     color: #747474;
-    font-family: 'Signika';
+    font-family: 'Source Sans Pro';
     font-weight: 400;
     font-size: 1.1em;
     margin-bottom: 10px;
@@ -127,6 +128,7 @@
 
   div.color_band {
     background-color: #fba919;
+    border-top: solid thin #fdcd83;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -284,6 +286,11 @@
 
           &.learn_more { 
             text-align: right;
+            
+            a {
+	            text-decoration: none;
+            }
+            
             span {
               white-space: nowrap;
               cursor: pointer;
