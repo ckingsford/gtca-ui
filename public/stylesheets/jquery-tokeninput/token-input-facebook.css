@@ -1,0 +1,119 @@
+ul.token-input-list-gtca {
+    overflow: hidden; 
+    width: 400px;
+    border: 1px solid #8496ba;
+    cursor: text;
+    min-height: 1px;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    clear: left;
+}
+
+ul.token-input-list-gtca li input {
+    border: 0;
+    width: 100px;
+    padding: 4px 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 35px;
+    background-color: transparent;
+    -webkit-appearance: caret;
+    font: inherit;
+}
+
+li.token-input-token-gtca {
+    box-sizing: border-box;
+    overflow: hidden; 
+    margin: 4px;
+    margin-left: 0;
+    height: 27px;
+    padding: 4px 5px;
+    background-color: #eee;
+    color: #555;
+    font-size: 0.9em;
+    cursor: default;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    float: left;
+    white-space: nowrap;
+}
+
+li.token-input-token-gtca p {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+li.token-input-token-gtca span {
+    color: #a6b3cf;
+    margin-left: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+li.token-input-selected-token-gtca {
+    background-color: #5670a6;
+    border: 1px solid #3b5998;
+    color: #fff;
+}
+
+li.token-input-input-token-gtca {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+div.token-input-dropdown-gtca {
+    position: absolute;
+    width: 400px;
+    background-color: #fff;
+    overflow: hidden;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    cursor: default;
+    font: inherit;
+    z-index: 1;
+}
+
+div.token-input-dropdown-gtca p {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    color: #777;
+}
+
+div.token-input-dropdown-gtca ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.token-input-dropdown-gtca ul li {
+    background-color: #fff;
+    padding: 3px;
+    margin: 0;
+    list-style-type: none;
+}
+
+div.token-input-dropdown-gtca ul li.token-input-dropdown-item-gtca {
+    background-color: #fff;
+}
+
+div.token-input-dropdown-gtca ul li.token-input-dropdown-item2-gtca {
+    background-color: #fff;
+}
+
+div.token-input-dropdown-gtca ul li em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+div.token-input-dropdown-gtca ul li.token-input-selected-dropdown-item-gtca {
+    background-color: #3b5998;
+    color: #fff;
+}

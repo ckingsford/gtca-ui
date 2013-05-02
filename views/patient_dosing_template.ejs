@@ -6,11 +6,11 @@
   <div class="title">Dose Adjustment</div>
   <div id="dosing">
     {{view Ember.TextField placeholder="Enter condition to prescribe for..."
-                           class="condition"
+                           class="search condition"
                            valueBinding="condition"}}
 
     {{view GTCA.DrugTextField placeholder="Add drug..."
-                              class="drug"
+                              class="search drug"
                               valueBinding="drug"}}
 
     <div class="results">

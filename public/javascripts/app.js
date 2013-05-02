@@ -149,6 +149,10 @@ GTCA.FactorView = Ember.View.extend({
 });
 
 GTCA.DrugTextField = Ember.TextField.extend({
+  didInsertElement: function() {
+    this.$().tokenInput("/drugs", { theme: "gtca", preventDuplicates: true });
+    this.$().siblings('ul').addClass('search drug');
+  },
   insertNewline: function() {
     this.get('controller').send('add_drug');
   }
