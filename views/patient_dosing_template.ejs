@@ -10,7 +10,7 @@
                            valueBinding="condition"}}
 
     <div class="drug_search_container">
-      <div class="dose_button">Dose</div>
+      <div class="dose_button" {{ action calculate }} >Dose</div>
       {{view GTCA.DrugTextField placeholder="Add drug..."
                                 class="search drug"
                                 valueBinding="drug"}}

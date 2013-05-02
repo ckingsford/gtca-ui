@@ -148,10 +148,30 @@ GTCA.FactorView = Ember.View.extend({
   }
 });
 
-GTCA.DrugTextField = Ember.TextField.extend({
+GTCA.DrugTextField = Ember.View.extend({
+  toDrugList: function(id_name) {
+    l = [];
+    $.each(id_name, function(idx, value) {
+      l.push(value.id);
+    });
+    return l;
+  },
   didInsertElement: function() {
-    this.$().tokenInput("/drugs", { theme: "gtca", preventDuplicates: true });
-    this.$().siblings('ul').addClass('search drug');
+    var view = this;
+    var $i = view.$();
+
+    $i.tokenInput("/drugs", {
+      theme: "gtca",
+      preventDuplicates: true,
+      onAdd: function(item) {
+        view.set('value', view.toDrugList($i.tokenInput('get')));
+      },
+      onDelete: function(item) {
+        view.set('value', view.toDrugList($i.tokenInput('get')));
+      }
+    });
+
+    $i.siblings('ul').addClass('search drug');
   },
   insertNewline: function() {
     this.get('controller').send('add_drug');
@@ -176,27 +196,6 @@ GTCA.SessionController = Ember.ObjectController.extend({
     }
   }.observes('selection'),
 
-  add_drug: function() { 
-    drugs = this.get('drugs');
-    var drug = undefined;
-    switch(this.get('drug').toLowerCase()) {
-      case 'warfarin':
-        drug = GTCA.Drug.find(1);
-        break;
-      case 'heparin':
-        drug = GTCA.Drug.find(2);
-        break;
-      case '':
-        break;
-      default:
-        alert('Bad drug: only Warfarin and Heparin currently supported'); 
-    }
-
-    drugs.addObject(drug);
-    this.set('selection', drug);
-    this.set('drug', "");
-  },
-
   close_tab: function(drug) {
     drugs = this.get('drugs');
     drugs.removeObject(drug);
@@ -208,6 +207,16 @@ GTCA.SessionController = Ember.ObjectController.extend({
       go_to = Math.max(0, drugs.indexOf(drug) - 1);
       this.set('selection', drugs.objectAt(go_to));
     }
+  },
+
+  calculate: function() {
+    var session = this;
+    var last = undefined;
+    $.each(this.get('drug'), function(i, drug_id) {
+      last = GTCA.Drug.find(drug_id);
+      session.get('drugs').addObject(last)
+    });
+    this.set('selection', last);
   }
 });
 
