@@ -198,7 +198,7 @@ Bootstrap.ItemViewTitleSupport = Ember.Mixin.create({
     return content;
 
   // TODO: make computed property function of parentView.itemTitleKey
-  }).property('content', 'content.title').cacheable()
+  }).property('content', 'content.drug.title').cacheable()
 });
 
 })();

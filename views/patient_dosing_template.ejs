@@ -5,32 +5,33 @@
   </div>
   <div class="title">Dose Adjustment</div>
   <div id="dosing">
-    {{view Ember.TextField placeholder="Enter condition to prescribe for..."
-                           class="search condition"
-                           valueBinding="condition"}}
+    {{view GTCA.ConditionsField token_find_url="/conditions"
+                                class="search condition"
+                                valueBinding="conditions_input"}}
 
     <div class="drug_search_container">
       <div class="dose_button" {{ action calculate }} >Dose</div>
-      {{view GTCA.DrugTextField placeholder="Add drug..."
-                                class="search drug"
-                                valueBinding="drug"}}
+      {{view GTCA.DrugsField token_find_url="/drugs"
+                             class="search drug"
+                             valueBinding="drugs_input"}}
     </div>
 
     <div class="results">
-      {{view Bootstrap.Tabs itemTitleKey="title"
-                            contentBinding="content.drugs"
+      {{view Bootstrap.Tabs itemTitleKey="drug.title"
+                            contentBinding="predictions"
                             selectionBinding="selection" class="tab_title"}}
       {{ outlet }}
     </div>
   </div>
 </script>
 
-<script type="text/x-handlebars" data-template-name="drug">
+<script type="text/x-handlebars" data-template-name="prediction">
   <div class="color_band"></div>
   <div class="drug container-fluid">
-      <div class="session_title">
-        <div class="label_title">MEDICATION - CONDITION(S)</div>
-        <div class="medication_title">{{ title }} - Atrial Fibrillation</div>
+      <div class="overview row-fluid">
+        <div class="span12">
+          Conditions prescribed for: {{#each conditions}} {{ title }} {{/each}}
+        </div>
       </div>
       <div class="overview row-fluid">
         <div class="span6">

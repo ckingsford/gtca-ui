@@ -4,12 +4,18 @@ GTCA = Ember.Application.create({
 
 GTCA.FixtureAdapter = DS.FixtureAdapter.extend({
   queryFixtures: function(fixtures, query, type) {
-    if (type == "GTCA.DosagePrediction") {
+    if (type == "GTCA.Prediction") {
       return [{
-        id: 'drug_' + query.drug.toString() + '_conditions' + query.conditions.toString(),
+        id: 'drug_' + query.drug.toString() + '_conditions_' + query.conditions.toString(),
         conditions: query.conditions,
-        drug: query.drug
+        drug: query.drug,
+        dosage: 3,
+        typical_dosage: 4,
+        factors: [3, 4]
       }];
+    } else if (type == "GTCA.Drug") {
+      console.log(fixtures);
+      return fixtures;
     }
   }
 });
@@ -24,7 +30,7 @@ GTCA.Router.map(function() {
     this.resource('dosing', function() {
       this.route('new_session');
       this.resource('session', { path: '/session/:session_id'}, function() {
-        this.resource('drug', { path: '/drug/:drug_id' }, function() {
+        this.resource('prediction', { path: '/prediction/:prediction_id' }, function() {
           this.resource('factor', { path: '/factor/:factor_id'});
         });
       });
@@ -44,23 +50,20 @@ GTCA.FactorRoute = Ember.Route.extend({
 GTCA.DosingNewSessionRoute = Ember.Route.extend({
   redirect: function() {
     this.transitionTo('session', GTCA.Session.createRecord({
-      drugs: []
+      predictions: []
     }));
   }
 });
 
 GTCA.SessionRoute = Ember.Route.extend({
   events: {
-    drug_selected: function(drug) {
-      this.transitionTo('drug', drug);
+    selected: function(prediction) {
+      this.transitionTo('prediction', prediction);
     },
-    no_more_drugs: function() {
+    no_more_predictions: function() {
       this.transitionTo('session');
     }
   }
-});
-
-GTCA.DrugRoute = Ember.Route.extend({
 });
 
 GTCA.Patient = DS.Model.extend({
@@ -77,22 +80,40 @@ GTCA.Patient = DS.Model.extend({
 });
 
 GTCA.Session = DS.Model.extend({
-  drugs: DS.hasMany('GTCA.Drug')
+  predictions: DS.hasMany('GTCA.Predictions')
+});
+
+GTCA.Prediction = DS.Model.extend({
+  drug: DS.belongsTo('GTCA.Drug'),
+  conditions: DS.hasMany('GTCA.Condition'),
+  typical_dosage: DS.attr('number'),
+  dosage: DS.attr('number'),
+  factors: DS.hasMany('GTCA.Factor')
 });
 
 GTCA.Drug = DS.Model.extend({
   title: DS.attr('string'),
-  dosage: DS.attr('number'),
-  typical_dosage: DS.attr('number'),
-  factors: DS.hasMany('GTCA.Factor')
+}
+);
+GTCA.Condition = DS.Model.extend({
+  title: DS.attr('string'),
 });
 
 GTCA.Factor = DS.Model.extend({
   name: DS.attr('string'),
   kind: DS.attr('string'),
   effect: DS.attr('number'),
-  drug: DS.belongsTo('GTCA.Drug')
+  prediction: DS.belongsTo('GTCA.Prediction')
 });
+
+GTCA.Prediction.FIXTURES = [{
+  id: 'drug_1_conditions_1',
+  conditions: [ 1 ],
+  drug: 1,
+  dosage: 3,
+  typical_dosage: 4,
+  factors: [1, 2]
+}];
 
 GTCA.Patient.FIXTURES = [{
   id: 'huAC827A',
@@ -107,24 +128,26 @@ GTCA.Patient.FIXTURES = [{
 GTCA.Session.FIXTURES = [];
 
 GTCA.Factor.FIXTURES = [
-  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, drug_id: 1 },
-  { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5, drug_id: 1 },
-  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2, drug_id: 2 },
-  { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3, drug_id: 2 }
+  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, prediction: 1 },
+  { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5, prediction: 1 },
+  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2, prediction: 2 },
+  { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3, prediction: 2 }
 ]
 
 GTCA.Drug.FIXTURES = [{
   id: 1,
   title: 'Warfarin',
-  dosage: 2,
-  typical_dosage: 1,
-  factors: [1, 2]
 }, {
   id: 2,
   title: 'Heparin',
-  dosage: 3,
-  typical_dosage: 4,
-  factors: [3, 4]
+}];
+
+GTCA.Condition.FIXTURES = [{
+  id: 1,
+  title: 'Atrial Fibrillation',
+}, {
+  id: 2,
+  title: 'Fibromyalgia',
 }];
 
 GTCA.PatientRoute = Ember.Route.extend({
@@ -140,7 +163,7 @@ GTCA.PatientRoute = Ember.Route.extend({
 GTCA.FactorRoute = Ember.Route.extend({
   events: {
     factor_closed: function() {
-      this.transitionTo('drug');
+      this.transitionTo('prediction');
     } 
   }
 });
@@ -199,49 +222,45 @@ GTCA.ConditionsField= GTCA.TokenizedTextField.extend({
     this._super();
 
     var $i = this.$();
-    $i.siblings('ul').addClass('search drug');
+    $i.siblings('ul').addClass('search condition');
   },
 });
 
-GTCA.DrugController = Ember.ObjectController.extend({
+GTCA.PredictionController = Ember.ObjectController.extend({
   needs: "patient"
 });
 
 GTCA.SessionController = Ember.ObjectController.extend({
-  condition: "",
-
-  condition_specified: function() {
-    return this.get('condition') != "";
-  }.property('condition'),
-
   selectionChanged: function() {
     selection = this.get('selection');
     if (selection) {
-      this.send('drug_selected', selection);
+      this.send('selected', selection);
     }
   }.observes('selection'),
 
-  close_tab: function(drug) {
-    drugs = this.get('drugs');
-    drugs.removeObject(drug);
+  close_tab: function(prediction) {
+    predictions = this.get('predictions');
+    predictions.removeObject(prediction);
 
-    if (drugs.get('length') == 0) {
-      this.send('no_more_drugs');
+    if (predictions.get('length') == 0) {
+      this.send('no_more_predictions');
       this.set('selection', null);
-    } else if (this.get('selection') == drug) {
-      go_to = Math.max(0, drugs.indexOf(drug) - 1);
-      this.set('selection', drugs.objectAt(go_to));
+    } else if (this.get('selection') == prediction) {
+      go_to = Math.max(0, predictions.indexOf(prediction) - 1);
+      this.set('selection', predictions.objectAt(go_to));
     }
   },
 
   calculate: function() {
     var session = this;
-    var last = undefined;
-    $.each(this.get('drug'), function(i, drug_id) {
-      last = GTCA.Drug.find(drug_id);
-      session.get('drugs').addObject(last)
+    var conditions_input = this.get('conditions_input');
+    $.each(this.get('drugs_input'), function(i, drug_id) {
+      var last = GTCA.Prediction.find({ drug: drug_id, conditions: conditions_input });
+      last.then(function(l) {
+        session.get('predictions').addObjects(l);
+        session.set('selection', l.get('lastObject'));
+      });
     });
-    this.set('selection', last);
   }
 });
 
