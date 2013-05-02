@@ -208,11 +208,26 @@ GTCA.SessionController = Ember.ObjectController.extend({
 
   open_session_picker: function() {
     new GTCA.SessionPickerView().append();
+  },
+
+  open_session_picker2: function() {
+    new GTCA.SessionPickerView2().append();
   }
 });
 
 GTCA.SessionPickerView = Ember.View.extend({
   templateName: "session-picker",
+  didInsertElement: function() {
+    var view = this;
+    this.$('.modal').modal();
+    this.$('.modal').on('hidden', function() {
+      view.destroy();
+    });
+  }
+});
+
+GTCA.SessionPickerView2 = Ember.View.extend({
+  templateName: "session-picker2",
   didInsertElement: function() {
     var view = this;
     this.$('.modal').modal();
