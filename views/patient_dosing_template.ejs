@@ -9,9 +9,12 @@
                            class="search condition"
                            valueBinding="condition"}}
 
-    {{view GTCA.DrugTextField placeholder="Add drug..."
-                              class="search drug"
-                              valueBinding="drug"}}
+    <div class="drug_search_container">
+      <div class="dose_button">Dose</div>
+      {{view GTCA.DrugTextField placeholder="Add drug..."
+                                class="search drug"
+                                valueBinding="drug"}}
+    </div>
 
     <div class="results">
       {{view Bootstrap.Tabs itemTitleKey="title"
