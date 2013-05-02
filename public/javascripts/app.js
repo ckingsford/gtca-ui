@@ -2,9 +2,21 @@ GTCA = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
 
+GTCA.FixtureAdapter = DS.FixtureAdapter.extend({
+  queryFixtures: function(fixtures, query, type) {
+    if (type == "GTCA.DosagePrediction") {
+      return [{
+        id: 'drug_' + query.drug.toString() + '_conditions' + query.conditions.toString(),
+        conditions: query.conditions,
+        drug: query.drug
+      }];
+    }
+  }
+});
+
 GTCA.Store = DS.Store.extend({
   revision: 12,
-  adapter: 'DS.FixtureAdapter'
+  adapter: 'GTCA.FixtureAdapter'
 });
 
 GTCA.Router.map(function() {
@@ -148,8 +160,8 @@ GTCA.FactorView = Ember.View.extend({
   }
 });
 
-GTCA.DrugTextField = Ember.View.extend({
-  toDrugList: function(id_name) {
+GTCA.TokenizedTextField = Ember.View.extend({
+  toIdList: function(id_name) {
     l = [];
     $.each(id_name, function(idx, value) {
       l.push(value.id);
@@ -160,22 +172,35 @@ GTCA.DrugTextField = Ember.View.extend({
     var view = this;
     var $i = view.$();
 
-    $i.tokenInput("/drugs", {
+    $i.tokenInput(this.get('token_find_url'), {
       theme: "gtca",
       preventDuplicates: true,
       onAdd: function(item) {
-        view.set('value', view.toDrugList($i.tokenInput('get')));
+        view.set('value', view.toIdList($i.tokenInput('get')));
       },
       onDelete: function(item) {
-        view.set('value', view.toDrugList($i.tokenInput('get')));
+        view.set('value', view.toIdList($i.tokenInput('get')));
       }
     });
+  }
+});
 
+GTCA.DrugsField = GTCA.TokenizedTextField.extend({
+  didInsertElement: function() {
+    this._super();
+
+    var $i = this.$();
     $i.siblings('ul').addClass('search drug');
   },
-  insertNewline: function() {
-    this.get('controller').send('add_drug');
-  }
+});
+
+GTCA.ConditionsField= GTCA.TokenizedTextField.extend({
+  didInsertElement: function() {
+    this._super();
+
+    var $i = this.$();
+    $i.siblings('ul').addClass('search drug');
+  },
 });
 
 GTCA.DrugController = Ember.ObjectController.extend({
