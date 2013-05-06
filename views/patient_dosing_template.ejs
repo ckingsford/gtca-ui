@@ -1,5 +1,6 @@
 <script type="text/x-handlebars" data-template-name="session">
   <div class="buttons">
+    <div {{ action open_session_picker2 }} class="open"></div>
     <div {{ action open_session_picker }} class="save"></div>
     <div class="print"></div>
   </div>
@@ -78,5 +79,6 @@
     </div>
 </script>
 
+<%= include patient_dosing_saved_template %>
 <%= include patient_dosing_save_template %>
 <%= include patient_dosing_learn_more_template %>
