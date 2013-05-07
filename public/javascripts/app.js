@@ -11,7 +11,7 @@ GTCA.FixtureAdapter = DS.FixtureAdapter.extend({
         drug: query.drug,
         dosage: 3,
         typical_dosage: 4,
-        factors: [3, 4]
+        factors: [1, 2, 3]
       }];
     } else if (type == "GTCA.Drug") {
       console.log(fixtures);

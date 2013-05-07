@@ -14,8 +14,10 @@ body {
 header {
   overflow: auto;
   .gradient(#ececec, #ececec, #f5f5f5);
-  border-top: #FFF solid 1px;
-  border-bottom: #CCC solid 1px;
+  .gradient(#3f3f3f, #373737, #414141);
+  border-top: #666 solid 1px;
+  border-bottom: #222 solid 1px;
+  color: #CCC;
 
   div#doctor-welcome {
     float: right;
@@ -24,8 +26,8 @@ header {
   
   div#doctor-settings {
 	  float: right;
-	  border-left: #CCC solid thin;
-	  box-shadow: inset 1px 0 0 #FFF;
+	  border-left: #222 solid thin;
+	  box-shadow: inset 1px 0 0 #666;
 	  background-image: url(/images/arrow.png);
 	  background-repeat: no-repeat;
 	  background-position: 0px 3px;
@@ -47,21 +49,29 @@ header {
   .buttons {
 	        float: right;
 	        cursor: pointer;
-	        margin: 6px 10px 0 0;
+	        margin: 10px 10px 0 0;
+	        color: #eee;
+	        .bolded;
+	        font-size: 1em;
+	        
 	        
 	        .save {
-		        width: 40px;
-		        height: 35px;
-		        background: #444;
-		        display: inline-block;
-		        border: 1px solid fade(#040404, 25%);
-		        border-top-color: #555;
-		        .drop-shadow( 0, 0, 3px, 0.1);
-		        margin-right: -4px;
-		        background-image: url(/images/save.png);
+	        	margin-left: 2px;
+		        padding: 5px 8px 5px 32px;
+			    .gradient(#3f3f3f, #373737, #414141);
+			    border-top: #333 solid thin;
+			    border-bottom: #666 solid thin;
+			    border-radius: 3px;
+			    display: inline-block;
+			    background-image: url(/images/save.png);
 		        background-position: 7px 7px;
 		        background-repeat: no-repeat;
-		        border-radius: 2px;
+		        background-size: 20px auto;
+		        background-color: #3d3d3d;
+		        transition: background-color .25s ease-in-out;
+		        -moz-transition: background-color .25s ease-in-out;
+		        -webkit-transition: background-color .25s ease-in-out;
+			    
 	        }
 	        
 	        .save:hover {
@@ -69,21 +79,25 @@ header {
 		        background-image: url(/images/save.png);
 		        background-position: 7px 7px;
 		        background-repeat: no-repeat;
+		        background-size: 20px auto;
 	        }
 	        
 	        .print {
-		        width: 40px;
-		        height: 35px;
-		        background: #444;
-		        display: inline-block;
-		        border: 1px solid fade(#040404, 25%);
-		        border-top-color: #555;
-		        .drop-shadow(0, 0, 3px, 0.1);
-		        background-image: url(/images/print.png);
+		        margin-left: 2px;
+		        padding: 5px 8px 6px 32px;
+			    .gradient(#3f3f3f, #373737, #414141);
+			    border-top: #333 solid thin;
+			    border-bottom: #666 solid thin;
+			    border-radius: 3px;
+			    display: inline-block;
+			    background-image: url(/images/print.png);
 		        background-position: 8px 7px;
 		        background-repeat: no-repeat;
-		        border-radius: 2px;
-		        
+		        background-size: 20px auto;
+		        background-color: #3d3d3d;
+		        transition: background-color .25s ease-in-out;
+		        -moz-transition: background-color .25s ease-in-out;
+		        -webkit-transition: background-color .25s ease-in-out;		        
 	        }
 	        
 	        .print:hover {
@@ -91,44 +105,62 @@ header {
 		        background-image: url(/images/print.png);
 		        background-position: 8px 7px;
 		        background-repeat: no-repeat;
+		        background-size: 20px auto;
 	        }
 
 	        .open {
-		        width: 40px;
-		        height: 35px;
-		        background: #444;
-		        display: inline-block;
-		        border: 1px solid fade(#040404, 25%);
-		        border-top-color: #555;
-		        .drop-shadow(0, 0, 3px, 0.1);
-		        background-image: url(/images/med.png);
-		        background-position: 13px 10px;
+		        margin-left: 2px;
+		        padding: 5px 8px 6px 32px;
+			    .gradient(#3f3f3f, #373737, #414141);
+			    border-top: #333 solid thin;
+			    border-bottom: #666 solid thin;
+			    border-radius: 3px;	    
+			    display: inline-block;    
+			    background-image: url(/images/open.png);
+		        background-position: 7px 7px;
+		        background-size: 20px auto;
 		        background-repeat: no-repeat;
-		        border-radius: 2px;
-		        margin-right: -4px;
+		        background-color: #3d3d3d;	
+		        transition: background-color .25s ease-in-out;
+		        -moz-transition: background-color .25s ease-in-out;
+		        -webkit-transition: background-color .25s ease-in-out;
 
-		        
 	        }
 	        
 	        .open:hover {
 		        background: #333;
-		        background-image: url(/images/med.png);
-		        background-position: 13px 10px;
+		        background-image: url(/images/open.png);
+		        background-position: 7px 7px;
 		        background-repeat: no-repeat;
+		        background-size: 20px auto;
 	        }
         }
 
   div.title {
     .bolded;
-    font-size: 1.4em;
+    font-size: 1em;
     color: #eee;
     text-shadow: 0px 0px 3px black;  
-    text-transform: uppercase;
-    text-align: center;
+    text-align: left;
+    height:20px;
 
-    .gradient(#3f3f3f, #373737, #414141);
-    padding: 15px 0;
-    border-bottom: 1px solid fade(white, 30%);    
+    //.gradient(#3f3f3f, #373737, #414141);
+    padding: 15px 0 15px 10px;
+    //border-bottom: 1px solid fade(white, 30%);    
+    
+    a {
+		
+		color: #eee;    	    
+	}
+	
+	span {
+		    padding: 5px 8px 6px 8px;
+		    .gradient(#3f3f3f, #373737, #414141);
+		    border-top: #333 solid thin;
+		    border-bottom: #666 solid thin;
+		    border-radius: 3px;
+	    }
+    
   }
   
   // dosing module

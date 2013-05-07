@@ -1,10 +1,10 @@
 <script type="text/x-handlebars" data-template-name="session">
   <div class="buttons">
-    <div {{ action open_session_picker2 }} class="open"></div>
-    <div {{ action open_session_picker }} class="save"></div>
-    <div class="print"></div>
+    <div {{ action open_session_picker2 }} class="open">Open</div>
+    <div {{ action open_session_picker }} class="save">Save</div>
+    <div class="print">Print</div>
   </div>
-  <div class="title">Dose Adjustment</div>
+  <div class="title"><a href=""><span>Home</span></a> &#8594; <span>Dose Adjustment</span></div>
   <div id="dosing">
 	 <div id="topBarWrapper">
 	    {{view GTCA.ConditionsField token_find_url="/conditions"
