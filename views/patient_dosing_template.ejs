@@ -6,17 +6,18 @@
   </div>
   <div class="title">Dose Adjustment</div>
   <div id="dosing">
-    {{view GTCA.ConditionsField token_find_url="/conditions"
-                                class="search condition"
-                                valueBinding="conditions_input"}}
-
-    <div class="drug_search_container">
-      <div class="dose_button" {{ action calculate }} >Dose</div>
-      {{view GTCA.DrugsField token_find_url="/drugs"
-                             class="search drug"
-                             valueBinding="drugs_input"}}
-    </div>
-
+	 <div id="topBarWrapper">
+	    {{view GTCA.ConditionsField token_find_url="/conditions"
+	                                class="search condition"
+	                                valueBinding="conditions_input"}}
+	
+	    <div class="drug_search_container">
+	      <div class="dose_button" {{ action calculate }} >Dose</div>
+	      {{view GTCA.DrugsField token_find_url="/drugs"
+	                             class="search drug"
+	                             valueBinding="drugs_input"}}
+	    </div>
+	</div>
     <div class="results">
       {{view Bootstrap.Tabs itemTitleKey="drug.title"
                             contentBinding="predictions"
@@ -29,9 +30,10 @@
 <script type="text/x-handlebars" data-template-name="prediction">
   <div class="color_band"></div>
   <div class="drug container-fluid">
-      <div class="overview row-fluid">
+      <div class="row-fluid session_title">
         <div class="span12">
-          Conditions prescribed for: {{#each conditions}} {{ title }} {{/each}}
+          <div class="medication_title">{{drug.title}} - {{dosage}}mg</div>
+          <div class="label_title">Prescribed for {{#each conditions}} <span>{{ title }}<span>,</span></span> {{/each}}</div>
         </div>
       </div>
       <div class="overview row-fluid">
@@ -64,7 +66,7 @@
                 <div class="name">{{ name }}</div>
                 <div class="type">{{ kind }}</div>
               </td>
-              <td class="effect"><span class="increase">{{renderEffect effect}}</span></td>
+              <td class="effect"><span class="decrease">{{renderEffect effect}}</span></td>
               <td class="learn_more">
                 {{#linkTo factor this}}<span>Learn More</span>{{/linkTo}}
               </td>

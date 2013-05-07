@@ -21,7 +21,9 @@ var DEFAULT_SETTINGS = {
     jsonContainer: null,
 
 	// Display settings
-    hintText: "Type in a search term",
+    hintText: "EnterText",
+    hintText1: "Enter condition",
+    hintText2: "Enter drug name",
     noResultsText: "No results",
     searchingText: "Searching...",
     deleteText: "&times;",
@@ -343,7 +345,7 @@ $.TokenList = function (input, url_or_data, settings) {
     // The list to store the dropdown items in
     var dropdown = $("<div>")
         .addClass(settings.classes.dropdown)
-        .appendTo("body")
+        .appendTo("#topBarWrapper")
         .hide();
 
     // Magic element to help us resize the text input
@@ -630,12 +632,18 @@ $.TokenList = function (input, url_or_data, settings) {
     function show_dropdown() {
         dropdown
             .css({
+                width: $('#dosing').width(),
                 position: "absolute",
-                top: $(token_list).offset().top + $(token_list).outerHeight(),
+                //top: $(token_list).offset().top + $(token_list).outerHeight(),
                 left: $(token_list).offset().left,
                 zindex: 999
             })
             .show();
+        $(window).resize(function(){
+	        dropdown.css("width",$('#dosing').width());
+        });
+        $('.token-input-dropdown-gtca').first().css("margin-top","-57px");
+        $('.token-input-dropdown-gtca').last().css("margin-top","-12px");
     }
 
     function show_dropdown_searching () {
@@ -649,6 +657,8 @@ $.TokenList = function (input, url_or_data, settings) {
         if(settings.hintText) {
             dropdown.html("<p>"+settings.hintText+"</p>");
             show_dropdown();
+            $('.token-input-dropdown-gtca').first().children().html("Enter condition(s) to prescribe for...");
+            $('.token-input-dropdown-gtca').last().children().html("Enter drug(s) to be prescribed...");
         }
     }
 

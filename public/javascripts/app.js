@@ -214,6 +214,7 @@ GTCA.DrugsField = GTCA.TokenizedTextField.extend({
 
     var $i = this.$();
     $i.siblings('ul').addClass('search drug');
+    $('.drug :input').attr("placeholder","Enter drug(s) to be prescribed...");
   },
 });
 
@@ -223,6 +224,8 @@ GTCA.ConditionsField= GTCA.TokenizedTextField.extend({
 
     var $i = this.$();
     $i.siblings('ul').addClass('search condition');
+    $('.condition :input').attr("placeholder","Enter condition(s) to prescribe for...");
+    
   },
 });
 
