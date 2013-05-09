@@ -142,31 +142,32 @@
     color: #5a5a5a;
 
     div.session_title {
-        margin-bottom: 25px;
-        text-align: center;
-        clear: both;
-        font-size: 1.2em;
+      .drop-shadow(0, 0, 3px, 0.1);
+      margin-bottom: 15px;
+      text-align: center;
+      clear: both;
+      font-size: 1.2em;
+      border: 1px solid fade(#040404, 15%);
+      background: #f6f6f5;
+      padding: 20px 0;
         
-        div {
-	    
-	    border: none !important;
-	    box-shadow: none !important;
-	    -webkit-box-shadow: none;
-	    -moz-box-shadow: none;
-	        
-		    .medication_title {
-	          font-size: 1.6em;
-	          margin-bottom: 8px;
-	          .bolded;
-	        }
-	
-	        .label_title {
-	          font-size: 1em;
-	          margin-bottom: 3px;
-	        }
-
-	        
+      div {
+        border: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+          
+        .medication_title {
+          font-size: 1.6em;
+          margin-bottom: 8px;
+          .bolded;
         }
+  
+        .label_title {
+          font-size: 1em;
+          margin-bottom: 3px;
+        }
+      }
     }
 
     div.overview {
@@ -312,7 +313,7 @@
             text-align: right;
             
             a {
-	            text-decoration: none;
+              text-decoration: none;
             }
             
             span {

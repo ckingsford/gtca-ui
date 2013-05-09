@@ -32,8 +32,10 @@
   <div class="drug container-fluid">
       <div class="row-fluid session_title">
         <div class="span12">
-          <div class="medication_title">{{drug.title}} - {{dosage}}mg</div>
-          <div class="label_title">Prescribed for {{#each conditions}} <span>{{ title }}<span>,</span></span> {{/each}}</div>
+          <div class="medication_title">{{drug.title}}, {{dosage}}mg</div>
+          <div class="label_title">
+            Prescribed for{{#each conditions}}<span>, &nbsp;{{ title }}</span>{{/each}}
+          </div>
         </div>
       </div>
       <div class="overview row-fluid">
@@ -72,7 +74,7 @@
                 <div class="name">{{ name }}</div>
                 <div class="type">{{ kind }}</div>
               </td>
-              <td class="effect"><span class="decrease">{{renderEffect effect}}</span></td>
+              <td class="effect"><span {{bindAttr class="polarity"}}>{{renderEffect effect}}</span></td>
               <td class="learn_more">
                 {{#linkTo factor this}}<span>Learn More</span>{{/linkTo}}
               </td>

@@ -111,6 +111,7 @@ GTCA.Factor = DS.Model.extend({
   name: DS.attr('string'),
   kind: DS.attr('string'),
   effect: DS.attr('number'),
+  polarity: DS.attr('string'),
   prediction: DS.belongsTo('GTCA.Prediction')
 });
 
@@ -136,11 +137,11 @@ GTCA.Patient.FIXTURES = [{
 GTCA.Session.FIXTURES = [];
 
 GTCA.Factor.FIXTURES = [
-  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5 },
-  { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5 },
-  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2 },
-  { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3 },
-  { id: 5, name: 'VKORC1', kind: 'Variant', effect: 0.2 }
+  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, polarity: 'increase' },
+  { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5, polarity: 'decrease' },
+  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2, polarity: 'increase' },
+  { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3, polarity: 'decrease' },
+  { id: 5, name: 'VKORC1', kind: 'Variant', effect: 0.2, polarity: 'increase' }
 ]
 
 GTCA.Drug.FIXTURES = [{
