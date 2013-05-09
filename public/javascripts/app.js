@@ -137,7 +137,7 @@ GTCA.Patient.FIXTURES = [{
 GTCA.Session.FIXTURES = [];
 
 GTCA.Factor.FIXTURES = [
-  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, polarity: 'increase' },
+  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, polarity: 'decrease' },
   { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5, polarity: 'decrease' },
   { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2, polarity: 'increase' },
   { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3, polarity: 'decrease' },
