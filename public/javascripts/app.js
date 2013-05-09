@@ -147,7 +147,7 @@ GTCA.Condition.FIXTURES = [{
   title: 'Atrial Fibrillation',
 }, {
   id: 2,
-  title: 'Fibromyalgia',
+  title: 'Obesity',
 }];
 
 GTCA.PatientRoute = Ember.Route.extend({
