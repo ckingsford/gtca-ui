@@ -5,16 +5,24 @@ GTCA = Ember.Application.create({
 GTCA.FixtureAdapter = DS.FixtureAdapter.extend({
   queryFixtures: function(fixtures, query, type) {
     if (type == "GTCA.Prediction") {
-      return [{
+      var prediction = {
         id: 'drug_' + query.drug.toString() + '_conditions_' + query.conditions.toString(),
         conditions: query.conditions,
         drug: query.drug,
-        dosage: 3,
-        typical_dosage: 1,
-        factors: [1, 2, 3]
-      }];
+      };
+
+      if (query.drug == 1) {
+        prediction.dosage = 3;
+        prediction.typical_dosage = 1;
+        prediction.factors = [1, 2, 3];
+      } else if (query.drug == 2) {
+        prediction.dosage = 5;
+        prediction.typical_dosage = 2;
+        prediction.factors = [2, 4, 5];
+      }
+
+      return [ prediction ];
     } else if (type == "GTCA.Drug") {
-      console.log(fixtures);
       return fixtures;
     }
   }
@@ -128,10 +136,11 @@ GTCA.Patient.FIXTURES = [{
 GTCA.Session.FIXTURES = [];
 
 GTCA.Factor.FIXTURES = [
-  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5, prediction: 1 },
-  { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5, prediction: 1 },
-  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2, prediction: 2 },
-  { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3, prediction: 2 }
+  { id: 1, name: 'CYP2C9*2', kind: 'Variant', effect: 0.5 },
+  { id: 2, name: 'CYP2C9*3', kind: 'Variant', effect: 0.5 },
+  { id: 3, name: 'Asian', kind: 'Ethnicity', effect: 0.2 },
+  { id: 4, name: 'Heart Surgery', kind: 'Condition', effect: 0.3 },
+  { id: 5, name: 'VKORC1', kind: 'Variant', effect: 0.2 }
 ]
 
 GTCA.Drug.FIXTURES = [{
