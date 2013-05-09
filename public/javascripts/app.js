@@ -117,10 +117,10 @@ GTCA.Prediction.FIXTURES = [{
 
 GTCA.Patient.FIXTURES = [{
   id: 'huAC827A',
-  first_name: 'Nikhil',
+  first_name: 'Divya',
   last_name: 'Venkatesan',
   birth_date: '3/10/1960',
-  gender: 'Male',
+  gender: 'Female',
   mr_id: 123213,
   acct_id: 13123
 }];
