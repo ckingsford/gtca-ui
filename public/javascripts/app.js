@@ -10,7 +10,7 @@ GTCA.FixtureAdapter = DS.FixtureAdapter.extend({
         conditions: query.conditions,
         drug: query.drug,
         dosage: 3,
-        typical_dosage: 4,
+        typical_dosage: 1,
         factors: [1, 2, 3]
       }];
     } else if (type == "GTCA.Drug") {
@@ -111,7 +111,7 @@ GTCA.Prediction.FIXTURES = [{
   conditions: [ 1 ],
   drug: 1,
   dosage: 3,
-  typical_dosage: 4,
+  typical_dosage: 1,
   factors: [1, 2]
 }];
 

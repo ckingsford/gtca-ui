@@ -198,18 +198,30 @@
 
         .value {
           padding: 20px 0;
-          font-size: 3em;
           background: white;
           min-height: 75px;
           max-height: 120px;
 
+          &.recommended {
+            font-size: 3em;
+          }
+
+          &.baseline {
+            font-size: 1.5em;
+            em { font-weight: bold; }
+          }
+
           .typical_dose {
+            text-align: left;
             width: 219px;
-            height: 120px;
+            height: 105px;
             display: block;
-            margin: 0 auto;
-            background-image: url(/images/typical_dose.png);
+            margin: 15px auto 0 auto;
+            background-image: url(/images/typical_dose_bar.png);
             background-size: 219px auto;
+            background-position: 0 1.3em;
+            background-repeat: no-repeat;
+            font-weight: 600;
           }
 
           .small_date {

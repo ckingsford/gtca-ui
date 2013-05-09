@@ -42,14 +42,20 @@
             <div class="large">Recommended Dosage</div>
             <div class="small">based on {{ controllers.patient.name }}&#39;s genetic information</div>
           </div>
-          <div class="value more_padding">{{ dosage }}mg<span class="small_date">/day</span></div>
+          <div class="value more_padding recommended">
+            {{ dosage }}mg<span class="small_date">/day</span>
+          </div>
         </div>
         <div class="span6">
           <div class="name">
             <div class="large">Baseline Dosage</div>
             <div class="small">without genetic information</div>
           </div>
-          <div class="value"><div class="typical_dose"></div></div>
+          <div class="value baseline">
+            <div class="typical_dose">
+              {{ typical_dosage }}mg
+            </div>
+          </div>
         </div>
       </div>
       <div class="factors row-fluid">
